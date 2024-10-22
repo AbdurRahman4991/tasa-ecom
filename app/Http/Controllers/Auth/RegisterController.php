@@ -34,13 +34,13 @@ class RegisterController extends Controller
         $role = Auth::user()->role; 
         switch ($role) {
           case 'admin':
-            return '/admin/back-dor';
+            return '/home-admin';
             break;
           case 'customer':
             return '/home';
             break;
             case 'vendor';
-            return '/vendor';
+            return '/home-vendor';
             break;
       
           default:

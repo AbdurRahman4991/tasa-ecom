@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class frontendHomeController extends Controller
 {
+    public function adminRegister()
+    {
+        return view('auth.admin.register');
+    }
+
+    public function vendorRegister()
+    {
+        return view('auth.vendor.register');
+    }
     public function productPage()
     {
         return view('product');

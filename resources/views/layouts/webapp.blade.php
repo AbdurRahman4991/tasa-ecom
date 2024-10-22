@@ -54,16 +54,17 @@
                 <!-- Collapsible wrapper -->
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Navbar brand -->
-                <a class="navbar-brand mt-2 mt-lg-0" href="#">
-                    <img
+                <a class="navbar-brand mt-2 mt-lg-0" href="{{url('/')}}">
+                  <span class="text-danger">T</span><span class="text-success">a</span><span class="text-danger">S</span><span class="text-success">a</span>
+                    <!-- <img
                     src="https://mdbcdn.b-cdn.net/img/logo/mdb-transaprent-noshadows.webp"
                     height="15"
                     alt="MDB Logo"
                     loading="lazy"
-                    />
+                    /> -->
                 </a>
                 <!-- Left links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                     <a class="nav-link" href="#">Dashboard</a>
                     </li>
@@ -73,16 +74,25 @@
                     <li class="nav-item">
                     <a class="nav-link" href="#">Projects</a>
                     </li>
-                </ul>
+                </ul> -->
                 <!-- Left links -->
                 </div>
                 <!-- Collapsible wrapper -->
 
                 <!-- Right elements -->
                 <div class="d-flex align-items-center">
-                <!-- Icon -->
+
+
+                <a class="text-reset me-3" href="{{route('vendorRegister')}}">Become a Seller</a>
+                <a class="text-reset me-3" href="{{route('login')}}">Login</a>
+                <a class="text-reset me-3" href="{{route('register')}}">Sign up</a>
+
+                  <!-- Icon -->
                 <a class="text-reset me-3" href="#">
                     <i class="fas fa-shopping-cart"></i>
+                </a>
+                <a class="text-reset me-3" href="#">
+                <i class="fa-solid fa-heart"></i>
                 </a>
 
                 <!-- Notifications -->
@@ -195,7 +205,7 @@
               <div class="info-item d-flex align-items-center">
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
-                  <h3>Email Us</h3>
+                  <h3>Email</h3>
                   <p>info@example.com</p>
                 </div>
               </div>
@@ -311,6 +321,11 @@
                     role="button"
                     ><i class="fab fa-github"></i
                 ></a>
+
+                <span class="float-end">
+                  <a class="text-reset me-3 text-danger" href="#">Privacy policy</a>
+                  <a class="text-reset me-3 text-danger" href="#">Terms & condition</a>
+                </span>
                 </section>
                 <!-- Section: Social media -->
             </div>

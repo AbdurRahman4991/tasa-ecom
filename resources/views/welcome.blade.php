@@ -61,7 +61,7 @@
 
                             <!-- Single item -->
                             <div class="carousel-item">
-                            <img src="{{asset('../assets/images/banner-1.jpg')}}" class="d-block w-100"
+                            <img src="{{asset('../assets/images/banner-1.jpg')}}"  class="d-block w-100"
                                 alt="Canyon at Nigh" />
                             <div class="carousel-caption d-none d-md-block">
                             <button class="btn btn-danger">Shop now</button>
