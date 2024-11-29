@@ -5,6 +5,8 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\UpdateController;
 use App\Http\Controllers\Web\frontendHomeController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SubCategoryController;
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
@@ -29,7 +31,9 @@ Route::get('/delete-user', [UpdateController::class, 'deleteUser'])->name('delet
 
 // Product page //
 
-Route::get('/category', [ProductController::class, 'category'])->name('showCategory');
+Route::get('/category', [CategoryController::class, 'category'])->name('showCategory');
+Route::post('/category', [CategoryController::class, 'saveCategory'])->name('save.category');
+Route::resource('sub-category',SubCategoryController::class);
 Route::get('/product', [ProductController::class, 'product'])->name('showProduct');
 Route::get('/order', [ProductController::class, 'order'])->name('showOrder');
 

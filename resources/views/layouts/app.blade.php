@@ -97,9 +97,9 @@
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>                                    
-                                </div>                               
-                            </li>                           
+                                    </form>
+                                </div>
+                            </li>
                         @endguest
                     </ul>
                 </div>
@@ -112,12 +112,15 @@
             <a class="nav-link active" href="{{url('/')}}">Website</a>
         </li>
 
-        
+
         @auth
             @if (Auth::user()->isAdmin())
                 <!-- Menu items for admin -->
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('showCategory')}}">Category</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('sub-category.index')}}">Sub category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('showProduct')}}">Product</a>
@@ -126,7 +129,7 @@
                     <a class="nav-link" href="{{route('showOrder')}}">Order</a>
                 </li>
             @endif
-            
+
             @if (Auth::user()->isVendor())
                 <!-- Menu items for vendor -->
                 <li class="nav-item">
