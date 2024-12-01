@@ -31,8 +31,7 @@ Route::get('/delete-user', [UpdateController::class, 'deleteUser'])->name('delet
 
 // Product page //
 
-Route::get('/category', [CategoryController::class, 'category'])->name('showCategory');
-Route::post('/category', [CategoryController::class, 'saveCategory'])->name('save.category');
+Route::resource('category',CategoryController::class);
 Route::resource('sub-category',SubCategoryController::class);
 Route::get('/product', [ProductController::class, 'product'])->name('showProduct');
 Route::get('/order', [ProductController::class, 'order'])->name('showOrder');

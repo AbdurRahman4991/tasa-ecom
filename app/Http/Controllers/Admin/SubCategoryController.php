@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\subCategory;
+use App\Models\Category;
+
 class SubCategoryController extends Controller
 {
     /**
@@ -12,8 +14,7 @@ class SubCategoryController extends Controller
      */
     public function index()
     {
-        $subCategory = subCategory::get();
-        return view('Admin.sub_category', compact($subCategory));
+        return view('Admin.sub_category');
     }
 
     /**
@@ -21,7 +22,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        $this->data['category'] = Category::get();
+        return response()->json($this->data);
     }
 
     /**
@@ -31,7 +33,7 @@ class SubCategoryController extends Controller
     {
         $subCategory = new subCategory();
         $subCategory->name = $request->subCategory;
-        $subCategory->category_id = $request->cateId;
+        $subCategory->category_id = $request->category;
         $subCategory->save();
     }
 

@@ -4,46 +4,62 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Category;
 
 class CategoryController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    public function category()
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
     {
         return view('Admin.category');
     }
-    public function saveCategory(Request $request)
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $category = Category::find($request->id);
-        if($category){
-        }else{
-            $category = new Category();
-        }
-        $category->name = $request->categoryName;
-        $category->save();
-        if($category){
-            return response()->json(['category successfull']);
-        }
-        return response()->json(['category faile']);
+        //
     }
 
-    public function edit($id)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
     {
-        $category = Category::find($id);
-        return $category;
+        //
     }
 
-    public function delect($id)
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $category = Category::find($id);
-        $category->delete();
-        if($category){
-            return response()->json(['category delete successfully']);
-        }
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

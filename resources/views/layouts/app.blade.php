@@ -117,7 +117,7 @@
             @if (Auth::user()->isAdmin())
                 <!-- Menu items for admin -->
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('showCategory')}}">Category</a>
+                    <a class="nav-link" href="{{route('category.index')}}">Category</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('sub-category.index')}}">Sub category</a>
@@ -166,6 +166,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('../assets/js/sub.category.js')}}"></script>
 
     <script>
         new DataTable('#example');
