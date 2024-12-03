@@ -10,10 +10,11 @@
         </div>
         <div class="modal-body">
             <h5>Do you want to delete</h5>
+            <input type="hidden" id="deleteCategoryId">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save </button>
+          <button type="button" id="deleteCategory" class="btn btn-primary">Yes </button>
         </div>
       </div>
     </div>

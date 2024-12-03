@@ -8,29 +8,15 @@
                 <thead>
                     <tr>
                         <th>Category</th>
-                        <th>Sub category</th>
-                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Shirt</td>
-                        <td>T-shirt, Polo-shirt,</td>
-                        <td>sirt.jpg</td>
-                        <td>
-                            <i data-bs-toggle="modal" data-bs-target="#editeModal" class="fa-regular fa-pen-to-square"></i>
-                            <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash"></i>
-                        </td>
-
-                    </tr>
-
+                    {{-- Shwo ajax data --}}
                 </tbody>
                 <tfoot>
                     <tr>
                         <th>Category</th>
-                        <th>Sub category</th>
-                        <th>Image</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
@@ -39,7 +25,11 @@
     </div>
 </div>
 
-@include('Modal.add_category')
-@include('Modal.edit_category')
-@include('Modal.delete_category')
+@include('Modal.Category.add_category')
+@include('Modal.Category.edit_category')
+@include('Modal.Category.delete_category')
+
+<script src="{{asset('../assets/js/category.js')}}"></script>
 @endsection
+
+

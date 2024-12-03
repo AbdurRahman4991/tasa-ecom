@@ -9,25 +9,28 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="{{route('category.store')}}" method="post">
-            @csrf
-            <div class="input-groupe">
-                <label for="">Category name</label>
-                <select name="category" class="form-select" id="">
-                    <option value="">Oile</option>
-                    <option value="">Food</option>
-                    <option value="">Fruite</option>
-                </select>
-            </div>
-            <div class="input-groupe">
-                <label for="">Sub category</label>
-                <input type="text" name='subCategory' placeholder="sub category" class="form-control">
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save </button>
-              </div>
-          </form>
+            <form id="subCategoryForm">
+                @csrf
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category name</label>
+                    <select name="category" id="category" class="form-select">
+                        @foreach ($category as $categories)
+                            <option value="{{ $categories->id }}">{{ $categories->name }}</option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="subCategory" class="form-label">Sub category</label>
+                    <input type="text" name="subCategory" id="subCategory" class="form-control" placeholder="Sub category">
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>
+
         </div>
       </div>
     </div>
