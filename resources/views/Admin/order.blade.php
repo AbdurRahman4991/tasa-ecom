@@ -1,44 +1,114 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-12">
-            <table id="example" class="display" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>Product name</th>
-                        <th>Customer name</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Shirt</td>
-                        <td>T-shirt, Polo-shirt,</td>
-                        <td>Pending</td>
-                        <td>
-                            <i data-bs-toggle="modal" data-bs-target="#editeModal" class="fa-regular fa-pen-to-square"></i>
-                            <i data-bs-toggle="modal" data-bs-target="#deleteModal" class="fa-solid fa-trash"></i>
-                        </td>
+<form id="attendanceForm">
+    <label for="employeeCode">Employee Code:</label>
+    <input type="text" id="employeeCode" name="EmployeeCode" required><br><br>
 
-                    </tr>
+    <label for="year">Year:</label>
+    <input type="number" id="year" name="Year" required><br><br>
 
-                </tbody>
-                <tfoot>
-                    <tr>
-                        <th>Category</th>
-                        <th>Sub category</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-    </div>
-</div>
+    <label for="month">Month:</label>
+    <select id="month" name="Month" required>
+        <option value="january">January</option>
+        <option value="february">February</option>
+        <option value="march">March</option>
+        <option value="april">April</option>
+        <option value="may">May</option>
+        <option value="june">June</option>
+        <option value="july">July</option>
+        <option value="august">August</option>
+        <option value="september">September</option>
+        <option value="october">October</option>
+        <option value="november">November</option>
+        <option value="december" selected>December</option>
+    </select><br><br>
 
-@include('Modal.Sub_category.add_sub_category')
-@include('Modal.Sub_category.edit_sub_category')
-@include('Modal.Sub_category.delete_sub_category')
+    <button type="submit">Fetch Attendance</button>
+</form>
+<div id="attendanceResult"></div>
+
+<script>
+    $(document).ready(function () {
+        $('#attendanceForm').on('submit', function (e) {
+            e.preventDefault(); // Prevent form submission
+
+            const apiUrl = 'http://apps.amangroupbd.com:1001/api/DailyAttendance/searchAttendances';
+            const params = {
+                EmployeeCode: $('#employeeCode').val(),
+                Year: $('#year').val(),
+                Month: $('#month').val()
+            };
+
+            $.ajax({
+                url: apiUrl,
+                type: 'GET',
+                data: params,
+                dataType: 'json',
+                success: function (response) {
+                    let html = '<h2>Attendance Data:</h2>';
+                    if (response && response.data) {
+                        html += `<pre>${JSON.stringify(response.data, null, 2)}</pre>`;
+                    } else {
+                        html += '<p>No data found.</p>';
+                    }
+                    $('#attendanceResult').html(html);
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error:', error);
+                    $('#attendanceResult').html(`<p>Error fetching data: ${error}</p>`);
+                }
+            });
+        });
+    });
+</script>
+
+
+ <form id="loginForm">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+
+        <button type="submit">Login</button>
+    </form>
+    <div id="loginResult"></div>
+
+    <script>
+        $(document).ready(function () {
+            $('#loginForm').on('submit', function (e) {
+                e.preventDefault(); // Prevent default form submission
+
+                const apiUrl = 'http://192.168.2.217:1001/api/auth/login';
+                const loginData = {
+                    username: $('#username').val(),
+                    password: $('#password').val()
+                };
+
+                $.ajax({
+                    url: apiUrl,
+                    type: 'POST',
+                    data: JSON.stringify(loginData),
+                    contentType: 'application/json',
+                    dataType: 'json',
+                    success: function (response) {
+                        if (response.token) {
+                            $('#loginResult').html('<p>Login successful!</p>');
+                            console.log('Token:', response.token); // Use or store the token as needed
+                        } else {
+                            $('#loginResult').html('<p>Login failed: Invalid response.</p>');
+                        }
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error:', error);
+                        let errorMessage = 'Login failed.';
+                        if (xhr.responseJSON && xhr.responseJSON.message) {
+                            errorMessage = xhr.responseJSON.message;
+                        }
+                        $('#loginResult').html(`<p>${errorMessage}</p>`);
+                    }
+                });
+            });
+        });
+    </script>
 @endsection

@@ -29,7 +29,7 @@
 @include('Modal.Category.edit_category')
 @include('Modal.Category.delete_category')
 
-<script src="{{asset('../assets/js/category.js')}}"></script>
+
 @endsection
 
 

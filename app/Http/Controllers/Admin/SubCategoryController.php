@@ -9,7 +9,6 @@ use App\Models\Category;
 
 class SubCategoryController extends Controller
 {
-
     public function __construct( Category $category)
     {
         $this->middleware('auth');
@@ -59,6 +58,10 @@ class SubCategoryController extends Controller
         ]);
     }
 
+    public function category()
+    {
+        return $this->data['category'] = Category::get();
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -71,8 +74,8 @@ class SubCategoryController extends Controller
         ]);
 
         $subCategory = new subCategory();
-        $subCategory->name = $request->subCategory;
         $subCategory->category_id = $request->category;
+        $subCategory->name = $request->subCategory;
         $subCategory->save();
     }
 
@@ -84,13 +87,14 @@ class SubCategoryController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $subCategory = subCategory::find($id);
-        return $subCategory;
+        return response()->json($subCategory);
     }
 
     /**
@@ -106,6 +110,12 @@ class SubCategoryController extends Controller
         $subCategory->name = $request->subCategory;
         $subCategory->category_id = $request->category;
         $subCategory->save();
+        if ($subCategory->save()) {
+            return response()->json([
+                'success' => true,
+                'message' => 'Subcategory updated successfully!',
+            ]);
+        }
     }
 
     /**

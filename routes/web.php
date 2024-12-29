@@ -33,9 +33,13 @@ Route::get('/delete-user', [UpdateController::class, 'deleteUser'])->name('delet
 
 Route::resource('category',CategoryController::class);
 Route::resource('sub-category',SubCategoryController::class);
+Route::get('category-show', [SubCategoryController::class, 'category'])->name('showSubcategory');
+Route::get('dependncy', [ProductController::class, 'dependencyCategory'])->name('dependencyCategory');
 Route::get('/product', [ProductController::class, 'product'])->name('showProduct');
-Route::get('/order', [ProductController::class, 'order'])->name('showOrder');
-
+Route::post('product-store', [ProductController::class, 'store'])->name('product.store');
+Route::get('product-list', [ProductController::class, 'index'])->name('product.index');
+Route::get('/products/{id}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::post('/products/update', [ProductController::class, 'update'])->name('products.update');
 
 // Vendor section //
 
